@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_e0d23d3844c042d4a693db451d01d02b }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_6491ab2de77b4d729ec7162a28b0dda7 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_fb96235cdcd04e5e93ca9c0b7b5ef5ba }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_8ec6451329844a7a8f682bd30f57ca7e }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_e0d23d3844c042d4a693db451d01d02b }}/fitbitdeploeyemnet:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_fb96235cdcd04e5e93ca9c0b7b5ef5ba }}/fitbitdeploeyemnet:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'fitbitdeployement'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a5f66efb439741db9634f1be1206ef2f }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_e0d23d3844c042d4a693db451d01d02b }}/fitbitdeploeyemnet:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_280ad76108264fb3bd3b86ebe5202c07 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_fb96235cdcd04e5e93ca9c0b7b5ef5ba }}/fitbitdeploeyemnet:${{ github.sha }}'
